@@ -99,7 +99,7 @@ void b2World::SetContactListener(b2ContactListener* listener)
 	m_contactManager.m_contactListener = listener;
 }
 
-void b2World::SetDebugDraw(b2Draw* debugDraw)
+void b2World::SetDebugDraw(const b2Draw* debugDraw)
 {
 	m_debugDraw = debugDraw;
 }
@@ -1028,7 +1028,7 @@ void b2World::RayCast(b2RayCastCallback* callback, const b2Vec2& point1, const b
 	m_contactManager.m_broadPhase.RayCast(&wrapper, input);
 }
 
-void b2World::DrawShape(b2Fixture* fixture, const b2Transform& xf, const b2Color& color)
+void b2World::DrawShape(b2Fixture* fixture, const b2Transform& xf, const b2Color& color) const
 {
 	switch (fixture->GetType())
 	{
@@ -1091,7 +1091,7 @@ void b2World::DrawShape(b2Fixture* fixture, const b2Transform& xf, const b2Color
 	}
 }
 
-void b2World::DrawJoint(b2Joint* joint)
+void b2World::DrawJoint(b2Joint* joint) const
 {
 	b2Body* bodyA = joint->GetBodyA();
 	b2Body* bodyB = joint->GetBodyB();
@@ -1132,7 +1132,7 @@ void b2World::DrawJoint(b2Joint* joint)
 	}
 }
 
-void b2World::DrawDebugData()
+void b2World::DrawDebugData() const
 {
 	if (m_debugDraw == NULL)
 	{
@@ -1198,7 +1198,7 @@ void b2World::DrawDebugData()
 	if (flags & b2Draw::e_aabbBit)
 	{
 		b2Color color(0.9f, 0.3f, 0.9f);
-		b2BroadPhase* bp = &m_contactManager.m_broadPhase;
+		const b2BroadPhase* bp = &m_contactManager.m_broadPhase;
 
 		for (b2Body* b = m_bodyList; b; b = b->GetNext())
 		{

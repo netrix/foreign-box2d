@@ -64,7 +64,7 @@ public:
 	/// Register a routine for debug drawing. The debug draw functions are called
 	/// inside with b2World::DrawDebugData method. The debug draw object is owned
 	/// by you and must remain in scope.
-	void SetDebugDraw(b2Draw* debugDraw);
+	void SetDebugDraw(const b2Draw* debugDraw);
 
 	/// Create a rigid body given a definition. No reference to the definition
 	/// is retained.
@@ -105,7 +105,7 @@ public:
 	void ClearForces();
 
 	/// Call this to draw shapes and other debug draw data.
-	void DrawDebugData();
+	void DrawDebugData() const;
 
 	/// Query the world for all fixtures that potentially overlap the
 	/// provided AABB.
@@ -227,8 +227,8 @@ private:
 	void Solve(const b2TimeStep& step);
 	void SolveTOI(const b2TimeStep& step);
 
-	void DrawJoint(b2Joint* joint);
-	void DrawShape(b2Fixture* shape, const b2Transform& xf, const b2Color& color);
+	void DrawJoint(b2Joint* joint) const;
+	void DrawShape(b2Fixture* shape, const b2Transform& xf, const b2Color& color) const;
 
 	b2BlockAllocator m_blockAllocator;
 	b2StackAllocator m_stackAllocator;
@@ -247,7 +247,7 @@ private:
 	bool m_allowSleep;
 
 	b2DestructionListener* m_destructionListener;
-	b2Draw* m_debugDraw;
+	const b2Draw* m_debugDraw;
 
 	// This is used to compute the time step ratio to
 	// support a variable time step.
