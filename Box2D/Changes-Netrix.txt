@@ -1,0 +1,6 @@
+Changelist:
+
+15.11.2012:
++ Updated DebugDraw interface's methods with const. 
++ Updated Testbed and b2World.
++ Added b2MotorJoint to CMakeLists.txt
