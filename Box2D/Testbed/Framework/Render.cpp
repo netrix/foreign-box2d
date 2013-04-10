@@ -29,7 +29,7 @@
 #include <cstring>
 using namespace std;
 
-void DebugDraw::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color)
+void DebugDraw::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color) const
 {
 	glColor3f(color.r, color.g, color.b);
 	glBegin(GL_LINE_LOOP);
@@ -40,7 +40,7 @@ void DebugDraw::DrawPolygon(const b2Vec2* vertices, int32 vertexCount, const b2C
 	glEnd();
 }
 
-void DebugDraw::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color)
+void DebugDraw::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color) const
 {
 	glEnable(GL_BLEND);
 	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -62,7 +62,7 @@ void DebugDraw::DrawSolidPolygon(const b2Vec2* vertices, int32 vertexCount, cons
 	glEnd();
 }
 
-void DebugDraw::DrawCircle(const b2Vec2& center, float32 radius, const b2Color& color)
+void DebugDraw::DrawCircle(const b2Vec2& center, float32 radius, const b2Color& color) const
 {
 	const float32 k_segments = 16.0f;
 	const float32 k_increment = 2.0f * b2_pi / k_segments;
@@ -78,7 +78,7 @@ void DebugDraw::DrawCircle(const b2Vec2& center, float32 radius, const b2Color& 
 	glEnd();
 }
 
-void DebugDraw::DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Vec2& axis, const b2Color& color)
+void DebugDraw::DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Vec2& axis, const b2Color& color) const
 {
 	const float32 k_segments = 16.0f;
 	const float32 k_increment = 2.0f * b2_pi / k_segments;
@@ -114,7 +114,7 @@ void DebugDraw::DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Ve
 	glEnd();
 }
 
-void DebugDraw::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color)
+void DebugDraw::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color) const
 {
 	glColor3f(color.r, color.g, color.b);
 	glBegin(GL_LINES);
@@ -123,7 +123,7 @@ void DebugDraw::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& c
 	glEnd();
 }
 
-void DebugDraw::DrawTransform(const b2Transform& xf)
+void DebugDraw::DrawTransform(const b2Transform& xf) const
 {
 	b2Vec2 p1 = xf.p, p2;
 	const float32 k_axisScale = 0.4f;
@@ -142,7 +142,7 @@ void DebugDraw::DrawTransform(const b2Transform& xf)
 	glEnd();
 }
 
-void DebugDraw::DrawPoint(const b2Vec2& p, float32 size, const b2Color& color)
+void DebugDraw::DrawPoint(const b2Vec2& p, float32 size, const b2Color& color) const
 {
 	glPointSize(size);
 	glBegin(GL_POINTS);
@@ -207,7 +207,7 @@ void DebugDraw::DrawString(const b2Vec2& p, const char *string, ...)
 	glPopMatrix();
 }
 
-void DebugDraw::DrawAABB(b2AABB* aabb, const b2Color& c)
+void DebugDraw::DrawAABB(b2AABB* aabb, const b2Color& c) const
 {
 	glColor3f(c.r, c.g, c.b);
 	glBegin(GL_LINE_LOOP);
